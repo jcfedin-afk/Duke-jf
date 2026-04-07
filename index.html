@@ -7,7 +7,28 @@
 </head>
 <body>
     <h1>Duke Sucellus Loot Simulator</h1>
-    <p>Welcome to the Duke Sucellus Loot Simulator!</p>
-    <p>Use this simulator to calculate the loot you can expect from the Duke Sucellus encounters.</p>
+    <p>Welcome to the Duke Sucellus Loot Simulator! Use this tool to simulate your loot from Duke Sucellus.</p>
+    <form>
+        <label for="items">Select Loot Items:</label>
+        <select id="items" name="items" multiple>
+            <option value="gold">Gold</option>
+            <option value="weapons">Weapons</option>
+            <option value="armor">Armor</option>
+            <option value="potions">Potions</option>
+        </select>
+        <br>
+        <button type="button" onclick="simulateLoot()">Simulate Loot</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        function simulateLoot() {
+            const items = document.getElementById('items').selectedOptions;
+            let result = 'You received: ';
+            for (let i = 0; i < items.length; i++) {
+                result += items[i].value + (i < items.length - 1 ? ', ' : '');
+            }
+            document.getElementById('result').innerText = result;
+        }
+    </script>
 </body>
 </html>
